@@ -1,0 +1,11 @@
+{
+  "name": "popstop-website",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "eleventy",
+    "start": "npx @11ty/eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
