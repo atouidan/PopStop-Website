@@ -1,22 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Menu</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/menu">Menu</a> |
-    <a href="/about">About</a> |
-    <a href="/contact">Contact</a>
-  </nav>
-  <main>
-    <h2>Our Menu</h2>
-<p>🍭 <strong>Cake Pops</strong> - $3 each<br>
-🍬 <strong>Pretzel Rods</strong> - $2 each</p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="/img/logo.jpg" alt="The Pop Stop Logo" class="logo" />
+      </div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/menu">Menu</a>
+        <a href="/order">Order</a>
+      </nav>
+    </header>
 
-  </main>
-</body>
+    <main>
+      <h1 class="text-4xl font-bold text-center text-[#3e2c20] my-10">Dessert Menu</h1>
+<!-- <h2 class="ombre-title">Handcrafted desserts that bring joy to every celebration</h2> -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
+  <!-- Menu Item -->
+  <div class="bg-white rounded-2xl shadow-md p-6">
+    <img src="/img/tropicalflower2_cakepop.png" alt="Cake Pops" class="w-full h-60 object-cover rounded-xl mb-4">
+    <h2 class="text-2xl font-semibold text-[#3e2c20] mb-1">Cake Pops <span class="block text-sm text-gray-500 font-normal">Sold by the Dozen</span></h2>
+    <p class="text-gray-700 mb-3">Classic cake pops on sticks, perfect for any occasion. Available in all flavors and custom designs.</p>
+    <div class="flex flex-wrap gap-2">
+      <span class="bg-pink-200 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Custom Shapes</span>
+      <span class="bg-yellow-100 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Many Flavors</span>
+      <span class="bg-green-100 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Individual Wrapping</span>
+    </div>
+  </div>
+  <!-- Repeat for other items -->
+  <div class="bg-white rounded-2xl shadow-md p-6">
+    <img src="/img/cakesicles.png" alt="Cakesicles" class="w-full h-60 object-cover rounded-xl mb-4">
+    <h2 class="text-2xl font-semibold text-[#3e2c20] mb-1">Cakesicles <span class="block text-sm text-gray-500 font-normal">Sold by the Dozen</span></h2>
+    <p class="text-gray-700 mb-3">A modern twist on traditional cake pops. Popsicle-shaped cakes covered in colorful chocolate.</p>
+    <div class="flex flex-wrap gap-2">
+      <span class="bg-blue-200 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Vibrant Designs</span>
+      <span class="bg-purple-100 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Many Flavors</span>
+    </div>
+  </div>
+  <!-- Add more items using the same structure -->
+  <!-- Pretzel Rods, Twists, Bite Size Pops, Fruit Tarts... -->
+  <!-- Repeat for other items -->
+  <div class="bg-white rounded-2xl shadow-md p-6">
+    <img src="/img/fork_pops.jpeg" alt="Bite Size Cake Pops" class="w-full h-60 object-cover rounded-xl mb-4">
+    <h2 class="text-2xl font-semibold text-[#3e2c20] mb-1">Bite Size Cake Pops <span class="block text-sm text-gray-500 font-normal">Sold by the Dozen</span></h2>
+    <p class="text-gray-700 mb-3">A fun bite size cake pops perfect for you dessert table. Round shaped with mini forks/toothpicks with fun designs and many other options.</p>
+    <div class="flex flex-wrap gap-2">
+      <span class="bg-pink-200 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Vibrant Designs</span>
+      <span class="bg-yellow-100 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Many Flavors</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-2xl shadow-md p-6">
+    <img src="/img/pretzel_rods.JPG" alt="Pretzel Rods" class="w-full h-60 object-cover rounded-xl mb-4">
+    <h2 class="text-2xl font-semibold text-[#3e2c20] mb-1">Chocolate covered Pretzel Rods <span class="block text-sm text-gray-500 font-normal">Sold by the Dozen</span></h2>
+    <p class="text-gray-700 mb-3">Crunchy pretzel rods dipped in chocolate and decorated to match any event theme.</p>
+    <div class="flex flex-wrap gap-2">
+      <span class="bg-green-100 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Vibrant Designs</span>
+      <span class="bg-blue-200 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Many Flavors</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-2xl shadow-md p-6">
+    <img src="/img/pretzel_twists.JPG" alt="Pretzel Rods" class="w-full h-60 object-cover rounded-xl mb-4">
+    <h2 class="text-2xl font-semibold text-[#3e2c20] mb-1">Chocolate covered Pretzel Twists <span class="block text-sm text-gray-500 font-normal">Sold by the Dozen</span></h2>
+    <p class="text-gray-700 mb-3">Crunchy pretzel twists dipped in chocolate and decorated to match any event theme.</p>
+    <div class="flex flex-wrap gap-2">
+      <span class="bg-purple-200 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Vibrant Designs</span>
+      <span class="bg-pink-100 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Many Flavors</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-2xl shadow-md p-6">
+    <img src="/img/fruit_tarts.JPG" alt="Fruit Tarts" class="w-full h-60 object-cover rounded-xl mb-4">
+    <h2 class="text-2xl font-semibold text-[#3e2c20] mb-1">Fruit Tarts (Vanilla & Chocolate) <span class="block text-sm text-gray-500 font-normal">Sold by the Dozen</span></h2>
+    <p class="text-gray-700 mb-3">Crunchy pretzel twists dipped in chocolate and decorated to match any event theme.</p>
+    <div class="flex flex-wrap gap-2">
+      <span class="bg-yellow-200 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Custard Filling</span>
+      <span class="bg-green-100 text-[#3e2c20] text-sm px-3 py-1 rounded-full">Chocolate Ganache</span>
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer>
+      <p><strong>The Pop Stop</strong></p>
+      <p>Handcrafted cake pops made with love in Metro Detroit Area, Michigan</p>
+      <p>Instagram &nbsp; | &nbsp; Email &nbsp; | &nbsp; Phone</p>
+    </footer>
+  </body>
 </html>
