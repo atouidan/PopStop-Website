@@ -10,30 +10,661 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <header>
+  <header class="sticky top-0 z-50 bg-f8e9dd shadow-md">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between py-2 px-6 gap-4 md:gap-0">
+      <!-- logo -->
       <div class="logo-container">
-        <img src="/img/logo.jpg" alt="The Pop Stop Logo" class="logo" />
+        <img src="/img/logo.jpg" alt="The Pop Stop Logo" class="w-24 h-auto rounded-xl shadow-sm" />
       </div>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/menu">Menu</a>
-        <a href="/order">Order</a>
+
+      <nav class="flex space-x-6">
+        <a href="/" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">
+          Home
+        </a>
+        <a href="/menu" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">
+          Menu
+        </a>
+        <a href="/order" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">
+          Order
+        </a>
+        <a href="/about" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">
+          About Us
+        </a>
       </nav>
-    </header>
+
+    </div>
+  </header>
+
+
+
+
 
     <main>
-      <h1 class="text-4xl font-bold text-center text-[#3e2c20] my-10">Order Now 🍰</h1>
-<iframe 
-  src="https://docs.google.com/forms/d/e/1FAIpQLScdJldW9PyERN4gj-Jfus3tmHob-kH7lsDBhscGB_ZyNaw3hg/viewform?embedded=true" 
-  width="100%" 
-  height="1600" 
-  frameborder="0" 
-  marginheight="0" 
-  marginwidth="0"
-  style="border-radius: 12px; border: 2px solid #ddd;"
->
-  Loading…
-</iframe>
+      <h1 class="text-4xl font-bold text-center text-[#3e2c20] mb-8">Order Form</h1>
+<form name="orderForm" method="POST" data-netlify="true" class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md space-y-6">
+<fieldset class="border border-[#3e2c20] rounded-lg p-6 mb-2">
+  <legend class="text-2xl font-semibold text-[#3e2c20] mb-1">Personal Details</legend>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">First Name</label>
+      <input type="text" name="first_name" required
+        class="w-full border border-gray-300 rounded-md p-2 focus:ring-[#f5e9d6] focus:outline-none focus:ring-2" />
+    </div>
+    <div>
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">Last Name</label>
+      <input type="text" name="last_name" required
+        class="w-full border border-gray-300 rounded-md p-2 focus:ring-[#f5e9d6] focus:outline-none focus:ring-2" />
+    </div>
+    <div>
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">Email</label>
+      <input type="email" name="email" required
+        class="w-full border border-gray-300 rounded-md p-2 focus:ring-[#f5e9d6] focus:outline-none focus:ring-2" />
+    </div>
+    <div>
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">Phone Number</label>
+      <input type="tel" name="phone"
+        class="w-full border border-gray-300 rounded-md p-2 focus:ring-[#f5e9d6] focus:outline-none focus:ring-2" />
+    </div>
+    <div>
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">Instagram (Optional)</label>
+      <input type="text" name="instagram"
+        class="w-full border border-gray-300 rounded-md p-2 focus:ring-[#f5e9d6] focus:outline-none focus:ring-2" />
+    </div>
+    <div>
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">Preferred Contact Method</label>
+      <select name="contact_method" required
+        class="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-[#f5e9d6] focus:outline-none focus:ring-2">
+        <option>Email</option>
+        <option>Phone</option>
+        <option>Instagram DMs</option>
+      </select>
+    </div>
+    <div>
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">Delivery or Pickup</label>
+      <select name="delivery_option" id="deliveryOption" required onchange="toggleAddressField()"
+        class="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-[#f5e9d6] focus:outline-none focus:ring-2">
+        <option value="Pickup">Pickup</option>
+        <option value="Delivery">Delivery</option>
+      </select>
+    </div>
+    <div id="addressField" class="col-span-1 md:col-span-2 hidden">
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">Address</label>
+      <textarea name="address" rows="3"
+        class="w-full border border-gray-300 rounded-md p-2 focus:ring-[#f5e9d6] focus:outline-none focus:ring-2"></textarea>
+    </div>
+    <div>
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">Pickup/Delivery Date</label>
+      <input type="date" name="date_needed" required
+        class="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-[#f5e9d6] focus:outline-none focus:ring-2" />
+    </div>
+    <div>
+      <label class="block text-base font-medium text-[#3e2c20] mb-1">Pickup/Delivery Time</label>
+      <input type="time" name="time_needed" required
+        class="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-[#f5e9d6] focus:outline-none focus:ring-2" />
+    </div>
+  </div>
+</fieldset>
+<!-- Dessert Selection -->
+<fieldset class="border border-[#3e2c20] rounded-lg p-6 mb-10">
+  <legend class="text-2xl font-semibold text-[#3e2c20] mb-1">Dessert Selection</legend>
+  <div class="space-y-2">
+    <label class="block text-base font-medium text-[#3e2c20] mb-1">Dessert Options</label>
+    <label class="flex items-center space-x-2 text-sm">
+      <input type="checkbox" class="dessert-toggle" value="cakepops">
+      <span>Cake Pops</span>
+    </label>
+    <label class="flex items-center space-x-2 text-sm">
+      <input type="checkbox" class="dessert-toggle" value="bitesizecakepops">
+      <span>Bite Size Cake Pops</span>
+    </label>
+    <label class="flex items-center space-x-2 text-sm">
+      <input type="checkbox" class="dessert-toggle" value="cakesicles">
+      <span>Cakesicles</span>
+    </label>
+    <label class="flex items-center space-x-2 text-sm">
+      <input type="checkbox" class="dessert-toggle" value="pretzelrods">
+      <span>Pretzel Rods</span>
+    </label>
+    <label class="flex items-center space-x-2 text-sm">
+      <input type="checkbox" class="dessert-toggle" value="pretzeltwists">
+      <span>Pretzel Twists</span>
+    </label>
+    <label class="flex items-center space-x-2 text-sm">
+      <input type="checkbox" class="dessert-toggle" value="tarts">
+      <span>Fruit Tarts</span>
+    </label>
+  </div>
+</fieldset>
+<!-- Dessert Detail Sections -->
+<!-- Cake Pops -->
+<fieldset id="cakepops-fields" class="dessert-section hidden border border-[#3e2c20] rounded-lg p-6 mb-6">
+  <legend class="text-lg font-semibold text-[#3e2c20] mb-2">Cake Pops Details</legend>
+  <label class="block mb-4">
+    Quantity:
+    <select name="cakepops_qty" onchange="toggleCustomQty(this, 'cakepops')" class="w-full mt-1 border rounded p-2">
+      <option value="12">12</option>
+      <option value="24">24</option>
+      <option value="36">36</option>
+      <option value="48">48</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <div id="cakepops-other" class="hidden mb-4">
+    <label class="block">
+      Custom Quantity:
+      <input type="number" name="cakepops_qty_other" min="1" step="1" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <label class="block text-base font-medium text-[#3e2c20] mb-2">Select Flavors (Up to 2 per dozen):</label>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-3">
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Vanilla" class="accent-[#a47158]" />
+      <span>Vanilla</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Chocolate" class="accent-[#a47158]" />
+      <span>Chocolate</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Red Velvet" class="accent-[#a47158]" />
+      <span>Red Velvet</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Mocha</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Carrot Cake</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Brownie Batter</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Biscoff Cookie</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Lemon Rasberry</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Cookies & Cream</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Peanut Butter Cup</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Strawberry Shortcake</span>
+    </label>
+    <label class="flex items-center text-sm space-x-1">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Birthday Cake Confetti</span>
+    </label>
+  </div>
+  <div>
+    <label class="block">
+      Color Scheme/Theme:
+      <input type="text" name="cakepops_other" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <div>
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+        Design/Inspo Photos
+    </label>
+    <input 
+        type="file" 
+        name="reference_images" 
+        multiple 
+        accept="image/*" 
+        class="w-full border border-gray-300 rounded-md p-2 text-sm text-[#3e2c20] file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#f5e9d6] file:text-[#3e2c20] hover:file:bg-[#e7d6bb]" 
+    />
+  </div>
+  <div class="mt-6">
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+        Individually Packaged Cake Pops
+    </label>
+    <div class="space-y-2 text-sm text-[#3e2c20]  mb-4">
+        <label class="flex items-center space-x-2">
+        <input type="radio" name="packaging" value="standard" class="accent-[#a47158]" required />
+        <span>Yes (Additional Charge)</span>
+        </label>
+        <label class="flex items-center space-x-2">
+        <input type="radio" name="packaging" value="individually_wrapped" class="accent-[#a47158]" />
+        <span>No</span>
+        </label>
+    </div>
+  </div>
+</fieldset>
+<!-- Bite Size Cake Pops -->
+<fieldset id="bitesizecakepops-fields" class="dessert-section hidden border border-[#3e2c20] rounded-lg p-6 mb-6">
+  <legend class="text-lg font-semibold text-[#3e2c20] mb-2">Bite Size Cake Pops Details</legend>
+  <label class="block mb-4">
+    Quantity:
+    <select name="bitesizecakepops_qty" onchange="toggleCustomQty(this, 'bitesizecakepops')" class="w-full mt-1 border rounded p-2">
+      <option value="12">12</option>
+      <option value="24">24</option>
+      <option value="36">36</option>
+      <option value="48">48</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <div id="bitesizecakepops-other" class="hidden mb-4">
+    <label class="block">
+      Custom Quantity:
+      <input type="number" name="bitesizecakepops_qty_other" min="1" step="1" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <label class="block text-base font-medium text-[#3e2c20] mb-2">Select Flavors (Up to 1 per dozen):</label>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-3">
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Vanilla" class="accent-[#a47158]" />
+      <span>Vanilla</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Chocolate" class="accent-[#a47158]" />
+      <span>Chocolate</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Red Velvet" class="accent-[#a47158]" />
+      <span>Red Velvet</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Mocha</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Carrot Cake</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Brownie Batter</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Biscoff Cookie</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Lemon Rasberry</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Cookies & Cream</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Peanut Butter Cup</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Strawberry Shortcake</span>
+    </label>
+    <label class="flex items-center text-sm space-x-1">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Birthday Cake Confetti</span>
+    </label>
+  </div>
+  <div>
+    <label class="block">
+      Color Scheme/Theme:
+      <input type="text" name="bitesizecakepopss_other" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <div>
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+        Design/Inspo Photos
+    </label>
+    <input 
+        type="file" 
+        name="reference_images" 
+        multiple 
+        accept="image/*" 
+        class="w-full border border-gray-300 rounded-md p-2 text-sm text-[#3e2c20] file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#f5e9d6] file:text-[#3e2c20] hover:file:bg-[#e7d6bb]" 
+    />
+  </div>
+</fieldset>
+<!-- Cakesicles -->
+<fieldset id="cakesicles-fields" class="dessert-section hidden border border-[#3e2c20] rounded-lg p-6 mb-6">
+  <legend class="text-lg font-semibold text-[#3e2c20] mb-2">Cakesicles Details</legend>
+  <label class="block mb-4">
+    Quantity:
+    <select name="cakesicles_qty" onchange="toggleCustomQty(this, 'cakesicles')" class="w-full mt-1 border rounded p-2">
+      <option value="12">12</option>
+      <option value="24">24</option>
+      <option value="36">36</option>
+      <option value="48">48</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <div id="cakesicles-other" class="hidden mb-4">
+    <label class="block">
+      Custom Quantity:
+      <input type="number" name="cakesicles_qty_other" min="1" step="1" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <label class="block text-base font-medium text-[#3e2c20] mb-2">Select Flavors (Up to 2 per dozen):</label>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-3">
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Vanilla" class="accent-[#a47158]" />
+      <span>Vanilla</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Chocolate" class="accent-[#a47158]" />
+      <span>Chocolate</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Red Velvet" class="accent-[#a47158]" />
+      <span>Red Velvet</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Mocha</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Carrot Cake</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Brownie Batter</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Biscoff Cookie</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Lemon Rasberry</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Cookies & Cream</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Peanut Butter Cup</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Strawberry Shortcake</span>
+    </label>
+    <label class="flex items-center text-sm space-x-1">
+      <input type="checkbox" name="flavors" value="Mocha" class="accent-[#a47158]" />
+      <span>Birthday Cake Confetti</span>
+    </label>
+  </div>
+  <div>
+    <label class="block">
+      Color Scheme/Theme:
+      <input type="text" name="cakesicles_other" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <div>
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+        Design/Inspo Photos
+    </label>
+    <input 
+        type="file" 
+        name="reference_images" 
+        multiple 
+        accept="image/*" 
+        class="w-full border border-gray-300 rounded-md p-2 text-sm text-[#3e2c20] file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#f5e9d6] file:text-[#3e2c20] hover:file:bg-[#e7d6bb]" 
+    />
+  </div>
+  <div class="mt-6">
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+        Individually Packaged Cakesicles
+    </label>
+    <div class="space-y-2 text-sm text-[#3e2c20] mb-4">
+        <!-- Clear Boxes -->
+        <label class="flex items-center space-x-2">
+        <input type="radio" name="packaging" value="clear_box" class="accent-[#a47158]" required />
+        <span class="preview-container">
+            Clear Boxes (Additional Charge)
+            <img src="/img/clear_box.jpeg" alt="Clear Box Preview" class="preview-image" />
+        </span>
+        </label>
+        <!-- Treat Bags -->
+        <label class="flex items-center space-x-2">
+        <input type="radio" name="packaging" value="treat_bag" class="accent-[#a47158]" required />
+        <span class="preview-container">
+            Treat Bags (Additional Charge)
+            <img src="/img/treat_bags.jpeg" alt="Treat Bag Preview" class="preview-image" />
+        </span>
+        </label>
+        <!-- No Packaging -->
+        <label class="flex items-center space-x-2">
+        <input type="radio" name="packaging" value="none" class="accent-[#a47158]" />
+        <span>No</span>
+        </label>
+    </div>
+  </div>
+</fieldset>
+<!-- Pretzel Rods -->
+<fieldset id="pretzelrods-fields" class="dessert-section hidden border border-[#3e2c20] rounded-lg p-6 mb-6">
+  <legend class="text-lg font-semibold text-[#3e2c20] mb-2">Pretzel Rods Details</legend>
+  <label class="block mb-4">
+    Quantity:
+    <select name="pretzelrods_qty" onchange="toggleCustomQty(this, 'pretzelrods')" class="w-full mt-1 border rounded p-2">
+      <option value="12">12</option>
+      <option value="24">24</option>
+      <option value="36">36</option>
+      <option value="48">48</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <div id="pretzelrods-other" class="hidden mb-4">
+    <label class="block">
+      Custom Quantity:
+      <input type="number" name="pretzelrods_qty_other" min="1" step="1" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <div>
+    <label class="block">
+      Color Scheme/Theme:
+      <input type="text" name="pretzelrods_other" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <div>
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+        Design/Inspo Photos
+    </label>
+    <input 
+        type="file" 
+        name="reference_images" 
+        multiple 
+        accept="image/*" 
+        class="w-full border border-gray-300 rounded-md p-2 text-sm text-[#3e2c20] file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#f5e9d6] file:text-[#3e2c20] hover:file:bg-[#e7d6bb]" 
+    />
+  </div>
+  <div class="mt-6">
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+    Individually Packaged Cake Pops
+    </label>
+    <div class="space-y-2 text-sm text-[#3e2c20]  mb-4">
+        <label class="flex items-center space-x-2">
+        <input type="radio" name="packaging" value="standard" class="accent-[#a47158]" required />
+        <span>Yes (Additional Charge)</span>
+        </label>
+        <label class="flex items-center space-x-2">
+        <input type="radio" name="packaging" value="individually_wrapped" class="accent-[#a47158]" />
+        <span>No</span>
+        </label>
+    </div>
+  </div>
+</fieldset>
+<!-- Pretzel Twists -->
+<fieldset id="pretzeltwists-fields" class="dessert-section hidden border border-[#3e2c20] rounded-lg p-6 mb-6">
+  <legend class="text-lg font-semibold text-[#3e2c20] mb-2">Pretzel Twists Details</legend>
+  <label class="block mb-4">
+    Quantity:
+    <select name="pretzeltwists_qty" onchange="toggleCustomQty(this, 'pretzeltwists')" class="w-full mt-1 border rounded p-2">
+      <option value="12">12</option>
+      <option value="24">24</option>
+      <option value="36">36</option>
+      <option value="48">48</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <div id="pretzeltwists-other" class="hidden mb-4">
+    <label class="block">
+      Custom Quantity:
+      <input type="number" name="pretzeltwists_qty_other" min="1" step="1" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <div>
+    <label class="block">
+      Color Scheme/Theme:
+      <input type="text" name="pretzeltwists_other" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <div>
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+        Design/Inspo Photos
+    </label>
+    <input 
+        type="file" 
+        name="reference_images" 
+        multiple 
+        accept="image/*" 
+        class="w-full border border-gray-300 rounded-md p-2 text-sm text-[#3e2c20] file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#f5e9d6] file:text-[#3e2c20] hover:file:bg-[#e7d6bb]" 
+    />
+  </div>
+  <div class="mt-6">
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+    Individually Packaged Pretzel Twists
+    </label>
+    <div class="space-y-2 text-sm text-[#3e2c20]  mb-4">
+        <label class="flex items-center space-x-2">
+        <input type="radio" name="packaging" value="standard" class="accent-[#a47158]" required />
+        <span>Yes (Additional Charge)</span>
+        </label>
+        <label class="flex items-center space-x-2">
+        <input type="radio" name="packaging" value="individually_wrapped" class="accent-[#a47158]" />
+        <span>No</span>
+        </label>
+    </div>
+  </div>
+</fieldset>
+<!-- Fruit Tarts -->
+<fieldset id="tarts-fields" class="dessert-section hidden border border-[#3e2c20] rounded-lg p-6 mb-6">
+  <legend class="text-lg font-semibold text-[#3e2c20] mb-2">Fruit Tart Details</legend>
+  <label class="block mb-4">
+    Quantity:
+    <select name="tarts_qty" onchange="toggleCustomQty(this, 'tarts')" class="w-full mt-1 border rounded p-2">
+      <option value="12">12</option>
+      <option value="24">24</option>
+      <option value="36">36</option>
+      <option value="48">48</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <div id="tarts-other" class="hidden mb-4">
+    <label class="block">
+      Custom Quantity:
+      <input type="number" name="tarts_qty_other" min="1" step="1" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <label class="block text-base font-medium text-[#3e2c20] mb-2">Select Flavors (Up to 2 per dozen):</label>
+  <div class="grid grid-cols-1">
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Vanilla" class="accent-[#a47158]" />
+      <span>Vanilla Tart & Custard Filling</span>
+    </label>
+    <label class="flex items-center text-sm space-x-2">
+      <input type="checkbox" name="flavors" value="Chocolate" class="accent-[#a47158]" />
+      <span>Chocolate Tart & Chocolate Ganache Filling</span>
+  </div>
+  <div>
+    <label class="block">
+      Do you have specific fruit topping preferences?
+      <input type="text" name="cakepops_other" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <div>
+    <label class="block">
+      Do you have fruit toppings to avoid?
+      <input type="text" name="cakepops_other" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+  <div>
+    <label class="block text-base font-medium text-[#3e2c20] mb-2">
+        Design/Inspo Photos
+    </label>
+    <input 
+        type="file" 
+        name="reference_images" 
+        multiple 
+        accept="image/*" 
+        class="w-full border border-gray-300 rounded-md p-2 text-sm text-[#3e2c20] file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#f5e9d6] file:text-[#3e2c20] hover:file:bg-[#e7d6bb]" 
+    />
+  </div>
+</fieldset>
+<fieldset>
+  <div>
+    <label class="order border-[#3e2c20] rounded-lg p-6 mb-1">
+      Do you have any allergies? If you do please add them below.
+      <input type="text" name="cakepops_other" class="w-full mt-1 border rounded p-2">
+    </label>
+  </div>
+</fieldset>
+  <button type="submit" class="block w-full bg-[#a47158] hover:bg-[#925c47] text-white font-semibold py-3 rounded-md transition duration-300">
+    Submit Order
+  </button>
+</form>
+<script>
+  function toggleAddressField() {
+    const option = document.getElementById("deliveryOption").value;
+    const address = document.getElementById("addressField");
+    address.classList.toggle("hidden", option !== "Delivery");
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    const dessertCheckboxes = document.querySelectorAll('.dessert-toggle');
+
+    dessertCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const section = document.getElementById(`${checkbox.value}-fields`);
+        if (checkbox.checked) {
+          section.classList.remove('hidden');
+        } else {
+          section.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  function toggleCustomQty(selectEl, dessert) {
+    const otherInput = document.getElementById(`${dessert}-other`);
+    otherInput.classList.toggle('hidden', selectEl.value !== 'other');
+  }
+
+  // Optional click support: toggle preview on click (for mobile usability)
+  document.querySelectorAll('.preview-container').forEach(container => {
+    container.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent bubbling
+      container.classList.toggle('clicked');
+
+      // Close others
+      document.querySelectorAll('.preview-container').forEach(other => {
+        if (other !== container) other.classList.remove('clicked');
+      });
+    });
+
+    // Optional: close previews when clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.preview-container').forEach(container => {
+        container.classList.remove('clicked');
+      });
+    });
+  });
+
+</script>
 
     </main>
 

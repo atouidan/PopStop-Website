@@ -10,44 +10,62 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <header>
+  <header class="sticky top-0 z-50 bg-f8e9dd shadow-md">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between py-2 px-6 gap-4 md:gap-0">
+      <!-- logo -->
       <div class="logo-container">
-        <img src="/img/logo.jpg" alt="The Pop Stop Logo" class="logo" />
+        <img src="/img/logo.jpg" alt="The Pop Stop Logo" class="w-24 h-auto rounded-xl shadow-sm" />
       </div>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/menu">Menu</a>
-        <a href="/order">Order</a>
+
+      <nav class="flex space-x-6">
+        <a href="/" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">
+          Home
+        </a>
+        <a href="/menu" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">
+          Menu
+        </a>
+        <a href="/order" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">
+          Order
+        </a>
+        <a href="/about" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">
+          About Us
+        </a>
       </nav>
-    </header>
+
+    </div>
+  </header>
+
+
+
+
 
     <main>
-      <img src="/img/logo.jpg" alt="The Pop Stop Logo" class="hero-logo" />
-<!-- <h1 style="text-align: center;"> The Pop Stop</h1> -->
-<h1 class="ombre-title">Handcrafted cake pops, fork pops, and cakesicles that bring joy to every celebration</h1>
-<div class="highlight-box">
-  <a class="button beige" href="/order">Custom Desserts</a>
-  <a class="button beige" href="/order">Endless Flavors</a>
-  <a class="button beige" href="/order">Easy Ordering</a>
+      <section class="text-center mb-10">
+<img src="/img/logo.jpg" alt="The Pop Stop Logo" class="mx-auto w-48 h-auto rounded-xl shadow-md mb-6" />
+<h1 class="text-4xl md:text-5xl font-bold text-[#3e2c20] leading-tight mb-4">Delight in Every Bite</h1>
+<p class="text-lg text-gray-700 max-w-xl mx-auto">Handcrafted cake pops, fork pops, and cakesicles made to sweeten your most memorable moments. Custom flavors. Gorgeous designs. Every detail matters.</p>
+</section>
+<div class="flex flex-wrap justify-center gap-4 mb-12">
+<a class="button beige shadow-md hover:shadow-lg transition" href="/order">Custom Desserts</a>
+<a class="button beige shadow-md hover:shadow-lg transition" href="/order">Endless Flavors</a>
+<a class="button beige shadow-md hover:shadow-lg transition" href="/order">Easy Ordering</a>
 </div>
-<br>
-<h2 style="text-align: center; font-size: 24px; font-weight: bold;">Custom Flavors</h2>
-<!-- <h2>Custom Flavors</h2> -->
-<!-- ## Custom Flavors -->
-<div class="flavor-box">
-  <div style="margin-bottom: 20px;">Vanilla • Chocolate • Red Velvet • Mocha • Carrot Cake • Brownie Batter • Biscoff Cookie • Lemon Rasberry • Cookies & Cream • Peanut Butter Cup • Strawberry Shortcake • Birthday Cake Funfetti</div>
-  <strong>Don't see your favorite? Just ask! We love creating new flavors.</strong>
-</div>
-<br>
-<div class="timeline-box">
-    <h2><span class="timeline-title"><i data-lucide="clock"></i> Order Timeline</span></h2>
+<section class="bg-white rounded-xl shadow-md p-8 mb-16">
+<h2 class="text-3xl font-semibold text-center text-[#3e2c20] mb-4">Our Signature Flavors</h2>
+<p class="text-center text-gray-700 mb-4">Vanilla • Chocolate • Red Velvet • Mocha • Carrot Cake • Brownie Batter • Biscoff Cookie • Lemon Raspberry • Cookies & Cream • Peanut Butter Cup • Strawberry Shortcake • Birthday Cake Funfetti</p>
+<p class="text-center text-[#5a3c2e] font-medium">Don't see your favorite? Just ask! We love creating new flavors.</p>
+</section>
+<section class="timeline-box mt-12 text-center">
+    <div class="mb-6">
+        <h2 class="timeline-title text-2xl font-semibold flex items-center justify-center gap-2"><i data-lucide="clock"></i> Order Timeline</h2>
+    </div>
     <ul class="timeline-list">
-    <li class="dot dot-pink"><strong>Submit Your Order:</strong> <br>Fill out our detailed order form with your preferences.</li>
-    <li class="dot dot-yellow"><strong>Order Review (24–48 Hours):</strong> <br>We’ll review your order and contact you to confirm details.</li>
-    <li class="dot dot-green"><strong>Handcrafted Fresh:</strong> <br>Your treats are made fresh to order with love and care.</li>
-    <li class="dot dot-blue"><strong>Pickup or Delivery:</strong> <br>Enjoy your custom cake pops!</li>
+        <li class="dot dot-pink"><strong>Submit Your Order:</strong><br> Fill out our detailed order form with your preferences.</li>
+        <li class="dot dot-yellow"><strong>Order Review (24–48 Hours):</strong><br> We’ll review your order and contact you to confirm details.</li>
+        <li class="dot dot-green"><strong>Handcrafted Fresh:</strong><br> Your treats are made fresh to order with love and care.</li>
+        <li class="dot dot-blue"><strong>Pickup or Delivery:</strong><br> Enjoy your custom cake pops!</li>
     </ul>
-</div>
+</section>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     lucide.createIcons();

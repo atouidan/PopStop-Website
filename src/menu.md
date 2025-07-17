@@ -3,7 +3,10 @@ title: "Menu"
 layout: base.njk
 ---
 
-<h1 class="text-4xl font-bold text-center text-[#3e2c20] my-10">Dessert Menu</h1>
+<!-- <h1 class="text-4xl font-bold text-center text-[#3e2c20] my-10">Dessert Menu</h1> -->
+<h1 class="text-4xl md:text-5xl font-bold text-center text-[#3e2c20] leading-tight mb-4">Dessert Menu</h1>
+<!-- <p class="text-lg text-gray-700 text-center mx-auto">Handcrafted desserts made to sweeten your most memorable moments. Custom flavors. Gorgeous designs. Every detail matters.</p> -->
+<br>
 <!-- <h2 class="ombre-title">Handcrafted desserts that bring joy to every celebration</h2> -->
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
