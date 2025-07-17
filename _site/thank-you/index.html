@@ -13,32 +13,35 @@
     <header class="sticky top-0 z-50 bg-[#f8e9dd] shadow-md">
       <div class="max-w-6xl mx-auto flex items-center justify-between py-2 px-6">
         <!-- logo -->
-        <div class="logo-container">
-          <img src="/img/logo.jpg" alt="The Pop Stop Logo" class="w-24 h-auto rounded-xl shadow-sm" />
+        <div>
+          <img src="/img/logo.jpg" alt="The Pop Stop Logo" class="w-20 h-auto rounded-xl shadow-sm" />
         </div>
 
-        <!-- Hamburger button for mobile -->
-        <button id="menu-toggle" class="md:hidden text-[#3e2c20] focus:outline-none">
-          <i data-lucide="menu" class="w-6 h-6"></i>
+        <!-- Mobile menu toggle button -->
+        <button id="menu-toggle" class="md:hidden text-[#3e2c20]">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
         </button>
 
-        <!-- Desktop Navigation -->
+        <!-- Desktop nav -->
         <nav class="hidden md:flex space-x-6">
-          <a href="/" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">Home</a>
-          <a href="/menu" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">Menu</a>
-          <a href="/order" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">Order</a>
-          <a href="/about" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] transition-colors duration-300 px-6 py-2 rounded-lg shadow-md text-center">About Us</a>
+          <a href="/" class="nav-btn">Home</a>
+          <a href="/menu" class="nav-btn">Menu</a>
+          <a href="/order" class="nav-btn">Order</a>
+          <a href="/about" class="nav-btn">About Us</a>
         </nav>
       </div>
 
-      <!-- Mobile Navigation -->
-      <nav id="mobile-menu" class="md:hidden hidden flex flex-col gap-2 px-6 pb-4">
-        <a href="/" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] px-4 py-2 rounded-md shadow text-center">Home</a>
-        <a href="/menu" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] px-4 py-2 rounded-md shadow text-center">Menu</a>
-        <a href="/order" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] px-4 py-2 rounded-md shadow text-center">Order</a>
-        <a href="/about" class="block bg-[#fffaf5] hover:bg-[#e3d2b8] px-4 py-2 rounded-md shadow text-center">About Us</a>
+      <!-- Mobile nav -->
+      <nav id="mobile-menu" class="hidden md:hidden flex flex-col px-6 pb-4 space-y-2">
+        <a href="/" class="nav-btn">Home</a>
+        <a href="/menu" class="nav-btn">Menu</a>
+        <a href="/order" class="nav-btn">Order</a>
+        <a href="/about" class="nav-btn">About Us</a>
       </nav>
     </header>
+
 
     <main>
         <h1 class="text-4xl text-center font-bold text-[#3e2c20] mb-4">Thank you for your order!</h1>
@@ -50,4 +53,18 @@
     <footer class="bg-[#fffaf5] text-center text-sm text-gray-700 px-6 py-4 mt-12">
       <p><strong>The Pop Stop</strong></p>
       <p>Handcrafted cake pops made with love in Metro Detroit Area, Michigan</p>
-      <p>Instagram: @popstop.mi &nbsp; | &nbsp; Email: thep
+      <p>Instagram: @popstop.mi &nbsp; | &nbsp; Email: thepopstop@gmail.com | &nbsp; Phone: (313) 394-9731
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons?.();
+
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+
+        toggle.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      });
+    </script>
