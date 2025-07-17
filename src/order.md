@@ -3,7 +3,7 @@ title: "Order"
 layout: base.njk
 ---
 
-<h1 class="text-4xl font-bold text-center text-[#3e2c20] mb-8">Order Form</h1>
+<h1 class="text-4xl md:text-5xl font-bold text-center text-[#3e2c20] leading-tight mb-4">Order Form</h1>
 
 <form name="orderForm" method="POST" data-netlify="true" class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md space-y-6">
 <fieldset class="border border-[#3e2c20] rounded-lg p-6 mb-2">
